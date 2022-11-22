@@ -1,12 +1,13 @@
 from lib.classes.ConsoleMaster import ConsoleMaster, exception_handler
 import random
+from time import sleep
 
 
 def copy_matrix(matrix):
     return [row[:] for row in matrix]
 
 
-w, h = 55, 55
+w, h = 35, 35
 cm = ConsoleMaster("GAME OF LIFE", 13, w, h)
 
 
@@ -67,7 +68,7 @@ def main():
                     else:
                         cm.go_xy(x, y)
                         cm.print_with_color([0, 0, 0], [0, 0, 0], " ")
-            counter = 150
+            counter = 300
         counter -= 1
 
         pass_matrix = copy_matrix(now_matrix)
@@ -105,7 +106,7 @@ def main():
                         cm.print_with_color(colour, [0, 0, 0], " ")
                     else:
                         now_matrix[x][y] = 0
-        # cm.pause()
+        sleep(0.05)
 
 
 main()
