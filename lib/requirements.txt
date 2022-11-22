@@ -1,3 +1,2 @@
 sty
-playsound
 cursor
