@@ -7,3 +7,9 @@ src/__pycache__/REN.cpython-310.pyc
 src/ConsoleMasterPy/__pycache__/__init__.cpython-310.pyc
 src/ConsoleMasterPy/__pycache__/ConsoleMaster.cpython-310.pyc
 src/__pycache__/ConsoleMasterPy.cpython-310.pyc
+dist/ConsoleMasterPy-1.0.0-py3-none-any.whl
+dist/ConsoleMasterPy-1.0.0.tar.gz
+src/ConsoleMasterPy.egg-info/dependency_links.txt
+src/ConsoleMasterPy.egg-info/PKG-INFO
+src/ConsoleMasterPy.egg-info/SOURCES.txt
+src/ConsoleMasterPy.egg-info/top_level.txt

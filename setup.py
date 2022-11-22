@@ -8,7 +8,7 @@ setuptools.setup(
     description="Console/Terminal functionality",
     long_description="Console/Terminal functionality",
     classifiers=[
-        "Programming Languaje :: Python :: 3",
+        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
