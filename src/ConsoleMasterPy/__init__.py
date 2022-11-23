@@ -121,6 +121,17 @@ class ConsoleMaster:
         os.system("title " + str(title))
         self.title = title
 
+    @exception_handler
+    def clean_zone(self, x_coord_init, y_coord_init, x_coord_end, y_coord_end):
+        for y in range(y_coord_init, y_coord_end):
+            self.go_xy(x_coord_init, y)
+            for x in range(x_coord_init, x_coord_end):
+                print(" ", end="", flush=True)
+
+    @exception_handler
+    def clean_windows(self):
+        os.system("cls")
+
 
 # aeiou
 # bcdfghjklmnpqrstvwxyz
@@ -133,29 +144,32 @@ def generate_name():
     bloc_4 = "BCDFGHJKLMNPQRSTVWXYZ"
     name = ""
 
-    option = random.randint(0, 2)
-    if option == 0:
+    option = random.randint(0, 5)
+    # print(str(option) + "-")
+    if option < 2:
         name += random.choice(bloc_3)
-    elif option == 1:
+    elif option < 5:
         name += random.choice(bloc_4) + random.choice(bloc_1)
-    elif option == 2:
+    else:
         name += random.choice(bloc_4) + random.choice(bloc_1) + random.choice(bloc_2)
 
     name_long = random.randint(2, 4)
     for i in range(name_long):
-        option = random.randint(0, 3)
-        if option == 0:
-            name += random.choice(bloc_1)
-        elif option == 1:
+        option = random.randint(0, 5)
+        # print(str(option) + "+")
+        if option < 2:
+            name += random.choice(["'", "", "", ""]) + random.choice(bloc_1)
+        elif option < 5:
             name += random.choice(bloc_2) + random.choice(bloc_1)
-        elif option == 2:
+        else:
             name += (
                 random.choice(bloc_2) + random.choice(bloc_1) + random.choice(bloc_2)
             )
 
     if random.randint(0, 1):
         if random.randint(0, 1):
-            option = random.randint(0, 3)
+            option = random.randint(0, 2)
+            # print(str(option) + "_")
             if option == 0:
                 name += " " + random.choice(bloc_3)
             elif option == 1:
@@ -167,7 +181,8 @@ def generate_name():
                     + random.choice(bloc_2)
                 )
         name += " "
-        option = random.randint(0, 3)
+        option = random.randint(0, 2)
+        # print(str(option) + "*")
         if option == 0:
             name += random.choice(bloc_3)
         elif option == 1:
@@ -178,12 +193,13 @@ def generate_name():
             )
         name_long = random.randint(2, 4)
         for i in range(name_long):
-            option = random.randint(0, 3)
-            if option == 0:
-                name += random.choice(bloc_1)
-            elif option == 1:
+            option = random.randint(0, 5)
+            # print(str(option) + "/")
+            if option < 2:
+                name += random.choice(["'", "", "", ""]) + random.choice(bloc_1)
+            elif option < 5:
                 name += random.choice(bloc_2) + random.choice(bloc_1)
-            elif option == 2:
+            else:
                 name += (
                     random.choice(bloc_2)
                     + random.choice(bloc_1)
