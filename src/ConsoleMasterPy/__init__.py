@@ -1,11 +1,10 @@
 import os
 import sys
 import datetime
-import pathlib
 import ctypes
+import random
 
 from sty import bg, fg, rs
-from playsound import playsound
 import cursor
 
 if sys.platform == "win32":
@@ -121,3 +120,74 @@ class ConsoleMaster:
     def change_windows_title(self, title):
         os.system("title " + str(title))
         self.title = title
+
+
+# aeiou
+# bcdfghjklmnpqrstvwxyz
+# AEIOU
+# BCDFGHJKLMNPQRSTVWXYZ
+@exception_handler
+def generate_name():
+    bloc_1 = "aeiou"
+    bloc_2 = "bcdfghjklmnpqrstvwxyz"
+    bloc_3 = "AEIOU"
+    bloc_4 = "BCDFGHJKLMNPQRSTVWXYZ"
+    name = ""
+
+    option = random.randint(0, 2)
+    if option == 0:
+        name += random.choice(bloc_3)
+    elif option == 1:
+        name += random.choice(bloc_4) + random.choice(bloc_1)
+    elif option == 2:
+        name += random.choice(bloc_4) + random.choice(bloc_1) + random.choice(bloc_2)
+
+    name_long = random.randint(2, 4)
+    for i in range(name_long):
+        option = random.randint(0, 3)
+        if option == 0:
+            name += random.choice(bloc_1)
+        elif option == 1:
+            name += random.choice(bloc_2) + random.choice(bloc_1)
+        elif option == 2:
+            name += (
+                random.choice(bloc_2) + random.choice(bloc_1) + random.choice(bloc_2)
+            )
+
+    if random.randint(1, 1):
+        if random.randint(0, 1):
+            option = random.randint(0, 3)
+            if option == 0:
+                name += " " + random.choice(bloc_3)
+            elif option == 1:
+                name += " " + random.choice(bloc_4) + random.choice(bloc_1)
+            elif option == 2:
+                name += " " + (
+                    random.choice(bloc_4)
+                    + random.choice(bloc_1)
+                    + random.choice(bloc_2)
+                )
+        name += " "
+        option = random.randint(0, 3)
+        if option == 0:
+            name += random.choice(bloc_3)
+        elif option == 1:
+            name += random.choice(bloc_4) + random.choice(bloc_1)
+        elif option == 2:
+            name += (
+                random.choice(bloc_4) + random.choice(bloc_1) + random.choice(bloc_2)
+            )
+        name_long = random.randint(2, 4)
+        for i in range(name_long):
+            option = random.randint(0, 3)
+            if option == 0:
+                name += random.choice(bloc_1)
+            elif option == 1:
+                name += random.choice(bloc_2) + random.choice(bloc_1)
+            elif option == 2:
+                name += (
+                    random.choice(bloc_2)
+                    + random.choice(bloc_1)
+                    + random.choice(bloc_2)
+                )
+    return name

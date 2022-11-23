@@ -1,4 +1,4 @@
-from src.ConsoleMasterPy import ConsoleMaster, exception_handler
+from src.ConsoleMasterPy import ConsoleMaster, exception_handler, generate_name
 import random
 from time import sleep
 
@@ -9,6 +9,8 @@ def copy_matrix(matrix):
 
 w, h = 35, 35
 cm = ConsoleMaster("GAME OF LIFE", 13, w, h)
+print(generate_name())
+cm.pause()
 
 
 @exception_handler
