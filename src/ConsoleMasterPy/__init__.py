@@ -93,7 +93,7 @@ class ConsoleMaster:
         font.dwFontSize.Y = size
         # font.FontFamily = 54
         # font.FontWeight = 400
-        # font.FaceName = "Lucida Console"
+        font.FaceName = "Terminal"
 
         handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
         ctypes.windll.kernel32.SetCurrentConsoleFontEx(
