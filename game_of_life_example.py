@@ -9,7 +9,8 @@ def copy_matrix(matrix):
 
 w, h = 35, 35
 cm = ConsoleMaster("GAME OF LIFE", 13, w, h)
-print(generate_name())
+name = generate_name()
+print(name)
 cm.pause()
 
 

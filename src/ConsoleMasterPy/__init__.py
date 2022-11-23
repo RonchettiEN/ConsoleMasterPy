@@ -126,7 +126,6 @@ class ConsoleMaster:
 # bcdfghjklmnpqrstvwxyz
 # AEIOU
 # BCDFGHJKLMNPQRSTVWXYZ
-@exception_handler
 def generate_name():
     bloc_1 = "aeiou"
     bloc_2 = "bcdfghjklmnpqrstvwxyz"
@@ -154,7 +153,7 @@ def generate_name():
                 random.choice(bloc_2) + random.choice(bloc_1) + random.choice(bloc_2)
             )
 
-    if random.randint(1, 1):
+    if random.randint(0, 1):
         if random.randint(0, 1):
             option = random.randint(0, 3)
             if option == 0:
