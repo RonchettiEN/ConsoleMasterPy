@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="ConsoleMasterPy",
-    version="1.0.3",
+    version="1.0.4",
     author="Ronchetti Ezequiel Nicolás",
     author_email="RonchettiEzequielNicolas@hotmail.com",
     description="Console/Terminal functionality",
