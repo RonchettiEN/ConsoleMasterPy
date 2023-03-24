@@ -1,4 +1,4 @@
-from src.ConsoleMasterPy import ConsoleMaster, exception_handler, generate_name
+from ConsoleMasterPy import ConsoleMaster, exception_handler
 import random
 from time import sleep
 
@@ -9,9 +9,6 @@ def copy_matrix(matrix):
 
 w, h = 35, 35
 cm = ConsoleMaster("GAME OF LIFE", 13, w, h)
-name = generate_name()
-print(name)
-cm.pause()
 
 
 @exception_handler
@@ -22,34 +19,10 @@ def main():
         if counter == 0:
             pass_matrix = [[0 for x in range(w)] for y in range(h)]
             now_matrix = copy_matrix(pass_matrix)
-            colour = [
-                random.randint(0, 255),
-                random.randint(0, 255),
-                random.randint(0, 255),
-            ]
+            colour = [random.randint(0, 255) for i in range(3)]
 
-            live_laws = [
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-            ]
-            born_laws = [
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-                random.randint(0, 1),
-            ]
+            live_laws = [random.randint(0, 1) for i in range(9)]
+            born_laws = [random.randint(0, 1) for i in range(9)]
 
             for x in range(w):
                 now_matrix[x][0] = 0
@@ -65,35 +38,18 @@ def main():
 
             for x in range(1, w - 1):
                 for y in range(1, h - 1):
-                    if now_matrix[x][y] == 1:
-                        cm.go_xy(x, y)
-                        cm.print_with_color(colour, [0, 0, 0], " ")
-                    else:
-                        cm.go_xy(x, y)
-                        cm.print_with_color([0, 0, 0], [0, 0, 0], " ")
+                    value = now_matrix[x][y]
+                    cm.go_xy(x, y)
+                    color = colour if value else [0, 0, 0]
+                    cm.print_with_color(color, [0, 0, 0], " ")
             counter = 300
         counter -= 1
 
         pass_matrix = copy_matrix(now_matrix)
         for x in range(1, w - 1):
             for y in range(1, h - 1):
-                count = 0
-                if x >= 0 and y >= 0 and pass_matrix[x - 1][y - 1] == 1:
-                    count += 1
-                if y >= 0 and pass_matrix[x][y - 1] == 1:
-                    count += 1
-                if x <= w and y >= 0 and pass_matrix[x + 1][y - 1] == 1:
-                    count += 1
-                if x >= 0 and pass_matrix[x - 1][y] == 1:
-                    count += 1
-                if x <= w and pass_matrix[x + 1][y] == 1:
-                    count += 1
-                if x >= 0 and y <= h and pass_matrix[x - 1][y + 1] == 1:
-                    count += 1
-                if y <= h and pass_matrix[x][y + 1] == 1:
-                    count += 1
-                if x <= w and y <= h and pass_matrix[x + 1][y + 1] == 1:
-                    count += 1
+                neighbors = [(x + i, y + j) for i in range(-1, 2) for j in range(-1, 2) if not (i == 0 and j == 0)]
+                count = sum(1 for i, j in neighbors if 0 <= i <= w and 0 <= j <= h and pass_matrix[i][j] == 1)
 
                 if pass_matrix[x][y] == 1:
                     if not live_laws[count]:
