@@ -1,4 +1,4 @@
-from ConsoleMasterPy import ConsoleMaster, exception_handler
+from src.ConsoleMasterPy import ConsoleMaster, exception_handler
 import random
 from time import sleep
 
